@@ -1,0 +1,19 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# ML models
+*.pkl
+
+# Flutter
+.dart_tool/
+build/
+.idea/
+
+# Env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
