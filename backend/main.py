@@ -9,6 +9,9 @@ import random
 from datetime import datetime, timezone
 from pydantic import BaseModel, Field, ConfigDict
 
+from dotenv import load_dotenv
+load_dotenv()  # reads .env when running locally
+
 # ── MongoDB ──────────────────────────────────
 MONGO_URI = os.environ.get("MONGO_URI")
 if not MONGO_URI:
