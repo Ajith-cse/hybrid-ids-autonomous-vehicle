@@ -10,7 +10,9 @@ from datetime import datetime, timezone
 from pydantic import BaseModel, Field, ConfigDict
 
 # ── MongoDB ──────────────────────────────────
-MONGO_URI = "mongodb+srv://avids:ajith1234@cluster0.qohexps.mongodb.net/av_ids?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URI = os.environ.get("MONGO_URI")
+if not MONGO_URI:
+    raise ValueError("MONGO_URI environment variable not set!")
 
 try:
     from motor.motor_asyncio import AsyncIOMotorClient
