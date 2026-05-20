@@ -6,7 +6,8 @@ import '../models/vehicle_data_model.dart';
 class ApiService {
   // Android emulator uses 10.0.2.2 to reach your PC localhost
   // Real device: change to your PC LAN IP e.g. http://192.168.1.10:8000
-  static const String baseUrl = 'http://192.168.58.253:8000';
+  // static const String baseUrl = 'http://10.35.234.253:8000';
+  static const String baseUrl = 'https://av-ids-api.onrender.com';
 
   late final Dio _dio;
 
