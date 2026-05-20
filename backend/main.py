@@ -7,9 +7,10 @@ import joblib
 import os
 import random
 from datetime import datetime, timezone
+from pydantic import BaseModel, Field, ConfigDict
 
 # ── MongoDB ──────────────────────────────────
-MONGO_URI = "mongodb+srv://avids:avids1234@cluster0.qohexps.mongodb.net/av_ids?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URI = "mongodb+srv://avids:ajith1234@cluster0.qohexps.mongodb.net/av_ids?retryWrites=true&w=majority&appName=Cluster0"
 
 try:
     from motor.motor_asyncio import AsyncIOMotorClient
@@ -20,9 +21,9 @@ try:
     db = mongo_client["av_ids"]
     logs_col = db["detection_logs"]
     MONGO_ENABLED = True
-    print("✅ MongoDB connected successfully")
+    print("[OK] MongoDB connected successfully")
 except Exception as e:
-    print(f"❌ MongoDB connection failed: {e}")
+    print(f"[ERROR] MongoDB connection failed: {e}")
     MONGO_ENABLED = False
     logs_col = None
 
@@ -70,6 +71,8 @@ class VehicleData(BaseModel):
     vehicle_id:   Optional[str] = "AV-001"
 
 class PredictionResponse(BaseModel):
+
+    model_config = ConfigDict(extra="ignore")
     vehicle_id:    str
     prediction:    str
     confidence:    float
@@ -272,3 +275,13 @@ async def websocket_endpoint(ws: WebSocket):
             await ws.receive_text()
     except WebSocketDisconnect:
         manager.disconnect(ws)
+
+
+
+
+
+
+
+
+        
+

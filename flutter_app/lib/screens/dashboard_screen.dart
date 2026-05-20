@@ -311,3 +311,14 @@ class _GpsTile extends StatelessWidget {
         ),
       );
 }
+
+
+
+
+
+
+//sample
+
+
+  
+  
